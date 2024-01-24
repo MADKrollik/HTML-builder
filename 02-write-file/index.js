@@ -6,9 +6,12 @@ const pathToFile = path.join(__dirname, 'text.txt');
 const output = fs.createWriteStream(pathToFile);
 
 function handleInput(chunk) {
-  if (chunk.toString().includes('exit')) {
+  const input = chunk.toString().trim().toLowerCase();
+
+  if (input === 'exit') {
     process.exit();
   }
+
   output.write(chunk);
 }
 
